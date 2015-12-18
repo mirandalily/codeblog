@@ -114,17 +114,6 @@ var menu = function() {
   });
 };
 
-// articleView.getFilters = function() {
-//   Article.allArticles.forEach(function(a) {
-//     if (Article.authors.indexOf(a.author) === -1) {
-//       Article.authors.push(a.author);
-//     }
-//     if (Article.categories.indexOf(a.category) === -1) {
-//       Article.categories.push(a.category);
-//     }
-//   });
-// };
-
 articleView.populateFilters = function() {
   Article.authors.forEach(function(a) {
     var $populateAuthors = $('#authoroption').clone;
