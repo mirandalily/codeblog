@@ -1,22 +1,14 @@
 var articleView = {};
 
-articleView.index = function() {
-  var _renderAll = function() {
-    $articles = $('#articles');
-    $articles.fadeIn().siblings().hide();
-    Article.all.forEach(function(article) {
-      $articles.append(articleView.render(article));
-    });
-  };
-
-  if (articleView.template) {
-    _renderAll();
-  } else {
-    $.get('/templates/article.html', function(data, msg, xhr) {
-      articleView.template = Handlebars.compile(data);
-      _renderAll();
-    });
-  }
+articleView.renderGroup = function(articleList) {
+  $('#articles')
+  .fadeIn()
+  .append(
+    articleList.map( function(a) {
+      return articleView.render(a);
+    })
+  )
+  .siblings().hide();
 };
 
 articleView.render = function(article) {
@@ -28,4 +20,12 @@ articleView.render = function(article) {
   article.categorySlug = util.slug(article.category);
 
   return articleView.template(article);
+};
+
+articleView.index = function() {
+  articleView.renderGroup(Article.all);
+};
+
+articleView.show = function(articles) {
+  articleView.renderGroup(articles);
 };
