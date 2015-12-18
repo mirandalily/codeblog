@@ -29,3 +29,56 @@ articleView.index = function() {
 articleView.show = function(articles) {
   articleView.renderGroup(articles);
 };
+
+articleView.populateFilters = function() {
+  Article.authors.forEach(function(a) {
+    var $populateAuthors = $('#authoroption').clone;
+    $populateAuthors.removeAttr('id');
+    $populateAuthors.text(pop);
+    $('#authorfilter').append($populateAuthors);
+  });
+  Article.categories.forEach(function(a) {
+    var $populateCategories = $('#categoryoption').clone();
+    $populateCategories.removeAttr('id');
+    $populateCategories.text(a);
+    $('#categoryfilter').append($populateCategories);
+  });
+};
+
+
+articleView.filterArticles = function() {
+  $('#authorfilter').on('change', function() {
+    $selection = this.value;
+    $('#categoryfilter').prop('selectedIndex', 0);
+    $('.post').each(function() {
+      var data = $(this).data('author');
+      if ($selection == 'Filter by author') {
+        $('.post').show();
+      } else if (data != $selection) {
+        $(this).hide();
+      } else {
+        $(this).show();
+      }
+    });
+  });
+
+  $('#categoryfilter').on('change', function() {
+    $selection = this.value;
+    $('#authorfilter').prop('selectedIndex', 0);
+    $('.post').each(function() {
+      var data = $(this).data('category');
+      if ($selection == 'Filter by category') {
+        $('.post').show();
+      } else if (data != $selection) {
+        $(this).hide();
+      } else {
+        $(this).show();
+      }
+    });
+  });
+};
+
+$(document).ready(function() {
+  menu();
+  populateFilters();
+});
