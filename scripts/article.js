@@ -2,7 +2,8 @@ function Article (opts) {
   Object.keys(opts).forEach(function(e, index, keys) {
     this[e] = opts[e];
   },this);
-
+  this.authorUrl = opts.authorUrl;
+  this.age = this.postAge(this.publishedOn);
   this.body = opts.body || marked(this.markdown);
 }
 
@@ -23,6 +24,15 @@ Article.prototype.tagsDropDown = function() {
   }
 };
 
+Article.prototype.postAge = function(date) {
+  var d1 = parseInt(new Date().getDate());
+  var m1 = parseInt(new Date().getMonth()+1); //January is 0!
+  var y1 = parseInt(new Date().getFullYear());
+  var d2 = parseInt(date.slice(8,10));
+  var m2 = parseInt(date.slice(5,7));
+  var y2 = parseInt(date.slice(0,4));
+  return Math.round(Math.abs((new Date(y2,m2,d2).getTime() - new Date(y1,m1,d1).getTime())/(24*60*60*1000)));
+};
 
 Article.prototype.insertRecord = function(callback) {
   webDB.execute(
@@ -38,12 +48,8 @@ Article.prototype.insertRecord = function(callback) {
 
 Article.prototype.updateRecord = function(callback) {
   webDB.execute(
-    [
-      {
-        'sql': 'UPDATE articles SET title = ?, author = ?, authorUrl = ?, category = ?, publishedOn = ?, markdown = ? WHERE id = ?;',
-        'data': [this.title, this.author, this.authorUrl, this.category, this.publishedOn, this.markdown, this.id]
-      }
-    ],
+    'UPDATE articles SET title="' + this.title + '", author="' + this.author + '", authorUrl="' + this.authorUrl + '", category="' + this.category + '", publishedOn="' + this.publishedOn + '", markdown="' + this.markdown + '" WHERE id="' + this.id + '";'
+    ,
     callback
   );
 };
@@ -63,7 +69,7 @@ Article.prototype.deleteRecord = function(callback) {
 Article.all = [];
 
 Article.requestAll = function(next, callback) {
-  $.getJSON('scripts/blogArticles.json', function (data) {
+  $.getJSON('scripts/hackerIpsum.json', function (data) {
     data.forEach(function(item) {
       var article = new Article(item);
       article.insertRecord();

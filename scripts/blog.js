@@ -2,24 +2,24 @@ var blog = {};
 blog.rawData = [];
 
 blog.loadArticles = function() {
-  $.get('template/article.html'), function(data, msg, xhr) {
+  $.get('templates/article.html'), function(data, msg, xhr) {
     Article.prototype.handlebarTest = Handlebars.compile(data);
     $.ajax({
       type: 'HEAD',
-      url: 'scripts/blogArticles.json',
+      url: 'scripts/hackerIpsum.json',
       success: blog.fetchArticles
     });
   };
 };
 
-blog.fetchArticles = function(data, msg, xhr){
+blog.fetchArticles = function(data, msg, xhr) {
   var eTag = xhr.getResponseHeader('eTag');
   if (typeof localStorage.articlesEtag == 'undefined' || localStorage.articlesEtag != eTag) {
     localStorage.articlesEtag=eTag;
 } else {
   webDB.execute('DROP TABLE articles;', function() {
       webDB.setupTables();
-      webDB.importArticlesFrom('scripts/blogArticles.json');
+      webDB.importArticlesFrom('scripts/hackerIpsum.json');
     });
   }
 };
@@ -106,7 +106,7 @@ blog.checkForEditArticle = function () {
   }
 };
 blog.initArticleEditorPage = function() {
-  $.get('template/article.html', function(data, msg, xhr) {
+  $.get('templates/article.html', function(data, msg, xhr) {
     Article.prototype.handlebarTest = Handlebars.compile(data);
   });
   $('.tab-content').show();
@@ -118,7 +118,7 @@ blog.initArticleEditorPage = function() {
 };
 
 blog.initNewArticlePage = function() {
-  $.get('template/article.html', function(data, msg, xhr) {
+  $.get('templates/article.html', function(data, msg, xhr) {
     Article.prototype.handlebarTest = Handlebars.compile(data);
   });
 
