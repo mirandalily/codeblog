@@ -1,27 +1,16 @@
-var repoView = {};
+var reposView = {};
 
-repoView.index = function() {
-  repoView.ui();
-
+reposView.index = function() {
+  reposView.ui();
   var _append = function(repo) {
-    $('#about ul').append(repoView.render(repo));
+    $('#about ul').append(reposView.render(repo));
   };
-
-  repos.all.filter(repoView.with('watchers'))
-  .forEach(_append);
-};
-
-repoView.with = function(attr) {
-  var _attrCheck = function(repo) {
-    return repo[attr];
-  };
-
-  return _attrCheck;
+  repos.all.forEach(_append);
 };
 
 repoView.render = function(repo) {
   return $('<li>')
-    .html('<a href="' + repo.html_url + '">' + repo.full_name + '</a>');
+    .text(repo.full_name);
 };
 
 repoView.ui = function() {

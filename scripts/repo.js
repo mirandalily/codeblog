@@ -2,7 +2,7 @@ var repos = {};
 
 repos.all = [];
 
-repos.requestRepos = function(callback) {
+repos.requestAll= function(callback) {
   $.ajax({
     url: '/github/users/mirandalily/repos' +
           '?per_page=100' +

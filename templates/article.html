@@ -1,17 +1,13 @@
-<article
-  class="clearfix"
-  data-author="{{authorSlug}}"
-  data-category="{{categorySlug}}">
-
-    <h1>{{title}}</h1>
-    <div class="byline">
-      By <address><a href="{{authorUrl}}">{{author}}</a></address>
-      {{publishStatus}}
-      {{#if_admin}}
-        <a href="editor/articles.html?id={{id}}&amp;admin=true" class="edit-btn">Edit</a>
-      {{/if_admin}}
-    </div>
-
-  <section class="article-body">{{{body}}}</section>
-  <a href="#" class="read-on">Read on &rarr;</a>
-</article>
+<div class="articlePosts">
+  <article id="post">
+    <h1 class="postTitle">{{title}}</h1>
+    <p class="postAuthor">By <a href="{{authorUrl}}">{{author}}</a> published on {{publishedOn}} (about {{age}} days ago)</p>
+    {{#if_admin}}
+      <a href="article.html?id={{id}}&amp;admin=true" class="edit-btn">Edit</a>
+      <a href="new.html?admin=true" class="new-btn">New</a>
+    {{/if_admin}}
+    <p class="postCategory">Category: {{category}}</p>
+    <div class="postBody">{{{body}}}</div>
+    <a href="#" class="read-on">Read More...</a>
+  </article>
+</div>

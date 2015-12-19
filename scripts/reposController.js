@@ -1,5 +1,8 @@
 var reposController = {};
 
 reposController.index = function() {
-  repos.requestRepos(repoView.index);
+  $('#about').show();
+  $('#stats').hide();
+  $('#articles').hide();
+  repos.requestAll(reposView.index);
 };

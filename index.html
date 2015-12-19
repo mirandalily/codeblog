@@ -21,37 +21,45 @@
     </header>
     <nav>
       <ul class="nav nav-tabs">
-        <li><a href="/" class="icon-home"> Home</a></li>
-          <li><a href="/about" class="icon-address-book"> About</a></li>
-          <li><a href="http://twitter.com/miranda_lily" target="_blank" class="icon-twitter3"> Twitter</a></li>
-          <li><a href="http://github.com/mirandalily" target="_blank" class="icon-github"> GitHub</a></li>
+        <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/stats">Stats</a></li>
+          <li><a href="http://twitter.com/miranda_lily" target="_blank">Twitter</a></li>
+          <li><a href="http://github.com/mirandalily" target="_blank">GitHub</a></li>
       </ul>
     </nav>
     <main>
       <section id="articles" class="tab-content">
-        <form>
-        <div id="auth">
-        <span id="filterauth">Filter By Author:</span>
-        <select name="authors" id="authorfilter">
-          <option id="authoroption">All</option>
-        </select>
-      </div>
-      <div id="cat">
-        <span id="filterauth">Filter By Category:</span>
-        <select name="categories" id="categoryfilter">
-          <option id="categoryoption">All</option>
-        </select>
-      </div>
-      </form>
+        <div id="filterContainer">
+            <div id="filters">
+              <form id="catFilter">
+                <select id="category">
+                  <span id="cat">Filter By Category:</span>
+                  <option class="catMenuItem" value="none">All</option>
+                </select>
+              </form>
+              <form id="authFilter">
+                <span id="filterauth">Filter By Author:</span>
+                <select id="author">
+                  <option class="authMenuItem" value-"none">All</option>
+                </select>
+              </form>
+            </div>
+          </div>
       </section>
+
       <section id="about" class="tab-content">
+        <ul></ul>
+      </section>
+
+      <section id="stats" class="tab-content"></section>
 
     </main>
     <footer>
 
     </footer>
       <!-- 3rd-party libraries: -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
     <script src="vendor/scripts/page.js"></script>
     <script src="vendor/scripts/html5sql.js"></script>
@@ -66,14 +74,17 @@
     <!-- Model: -->
     <script src="scripts/article.js"></script>
     <script src="scripts/repo.js"></script>
+    <scripts src="/stats.js" type="text/javascript"></script>
 
     <!-- View: -->
     <script src="scripts/articleView.js"></script>
     <script src="scripts/repoView.js"></script>
+    <script src="scripts/statsView.js" type="text/javascript"></script>
 
     <!-- Controller? -->
     <script src="scripts/articlesController.js"></script>
     <script src="scripts/reposController.js"></script>
+    <script src="scripts/statsController.js" type="text/javascript"></script>
 
     <!-- Router? -->
     <script src="scripts/router.js"></script>

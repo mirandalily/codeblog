@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Miranda Code Blog</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, target-densitydpi=device-dpi, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/highlight.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="styles/new.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/default.min.css">
+
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h1>Miranda Raymond</h1>
+      </nav>
+    </header>
+    <main class="new">
+      <div class="wrapper">
+      <section id="write">
+        <h3>New Post</h3>
+        <form action="#" id="new-form">
+          <label>
+            <input type="text" id="article-title" placeholder="Article title" required>
+          </label>
+          <textarea id="article-body" placeholder="Article content" rows="8" cols="40" required></textarea>
+          <label>
+            <input type="text" id="article-author" placeholder="Author Name" required>
+          </label>
+          <label>
+            <input type="text" id="article-author-url" placeholder="Author's URL" required>
+          </label>
+          <label>
+            <input type="text" id="article-category" placeholder="Category" required>
+          </label>
+          <label>
+            <input type="checkbox" id="article-published" checked> Published
+          </label>
+        </form>
+      </section>
+      <h3 id="preview">Live Preview</h3>
+      <section id="articles">
+
+        <!-- Preview will load here based on the above template-->
+      </section>
+      <section id="article-export">
+        <button id="add-article-btn" class="pull-left">Add to Database</button>
+        <button id="update-article-btn" class="pull-left" style="display: none;">Update Article</button>
+        <button id="delete-article-btn" class="pull-left" style="display: none;">Delete Article</button>
+        <label id="export-field" for="article-json" class="pull-right">
+          <input type="text" id="article-json"></textarea>
+          When finalized, copy the above JSON, and paste into blogArticles.js
+        </label>
+      </section>
+    </div>
+
+    </main>
+    <footer>
+    </footer>
+    <script src="vendor/scripts/html5sql.js" type="text/javascript"></script>
+    <script src="vendor/scripts/webDB.js" type="text/javascript"></script>
+    <script src="scripts/util.js" type="text/javascript"></script>
+    <script src="scripts/article.js" type="text/javascript"></script>
+    <script src="scripts/blog.js" type="text/javascript"></script>
+    <script src="scripts/new.js" type="text/javascript"></script>
+  </body>
+</html>

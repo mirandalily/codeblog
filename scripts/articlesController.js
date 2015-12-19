@@ -1,32 +1,20 @@
 var articlesController = {};
 
 articlesController.index = function() {
+  webDB.init();
   Article.loadAll(articleView.index);
-};
-
-articlesController.template = function(ctx, next) {
-  if (articleView.template) {
-    next();
-  } else {
-    $get('templates/article.html', function(data, msg, xhr){
-      articleView.template = Handlebars.compile(data);
-    });
-  }
 };
 
 articlesController.category = function(ctx, next) {
   var categoryData = function(data) {
     ctx.articles = data;
     next();
-
   };
-
-  Article.findByCategory(ctx.params.category, categoryData );
+  Article.findByCategory(ctx.params.category, categoryData);
 };
 
-
 articlesController.author = function(ctx, next) {
-  console.log(ctx);
+  console.log(ctx.params.author);
 };
 
 articlesController.show = function(ctx, next) {
