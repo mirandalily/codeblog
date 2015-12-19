@@ -72,7 +72,7 @@ Article.requestAll = function(next, callback) {
   });
 };
 
-Article.find = function(category, callback) {
+Article.findByCategory = function(category, callback) {
   webDB.execute(
     [
       {
@@ -96,7 +96,7 @@ Article.loadAll = function(callback) {
           rows.forEach(function(row) {
             Article.all.push(new Article(row));
           });
-          Article.hambugerMenu();
+          Article.hamburgerMenu();
           callback();
         }
       }
@@ -104,13 +104,6 @@ Article.loadAll = function(callback) {
   } else {
     callback();
   }
-};
-
-
-Article.truncateTable = function(callback) {
-  webDB.execute('DELETE FROM articles;',
-    callback
-  );
 };
 
 Article.truncateArticles = function() {
@@ -122,24 +115,6 @@ Article.truncateArticles = function() {
     $(this).siblings('.postBody').find('p:not(:nth-child(2))').toggle();
   });
 };
-
-<<<<<<< HEAD
-=======
-articleView.populateFilters = function() {
-  Article.authors.forEach(function(a) {
-    var $populateAuthors = $('#authoroption').clone;
-    $populateAuthors.removeAttr('id');
-    $populateAuthors.text(pop);
-    $('#authorfilter').append($populateAuthors);
-  });
-  Article.categories.forEach(function(a) {
-    var $populateCategories = $('#categoryoption').clone();
-    $populateCategories.removeAttr('id');
-    $populateCategories.text(a);
-    $('#categoryfilter').append($populateCategories);
-  });
-};
->>>>>>> f8cd7d8030f70229b1571ddf9d908bc832171e22
 
 Article.filterHandler = function() {
   $('select[id="category"]').change(function(e){
@@ -178,4 +153,4 @@ Article.hamburgerMenu = function() {
       });
     });
   };
-});
+};

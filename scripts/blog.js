@@ -9,7 +9,7 @@ blog.loadArticles = function() {
       url: 'scripts/blogArticles.json',
       success: blog.fetchArticles
     });
-  });
+  };
 };
 
 blog.fetchArticles = function(data, msg, xhr){

@@ -24,7 +24,7 @@
         <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/stats">Stats</a></li>
-          <li><a href="http://twitter.com/miranda_lily" target="_blank">Twitter</a></li>
+          <li><a href="" target="_blank">Twitter</a></li>
           <li><a href="http://github.com/mirandalily" target="_blank">GitHub</a></li>
       </ul>
     </nav>
@@ -32,14 +32,14 @@
       <section id="articles" class="tab-content">
         <div id="filterContainer">
             <div id="filters">
+              <p id="cat">Filter By Category:</p>
               <form id="catFilter">
                 <select id="category">
-                  <span id="cat">Filter By Category:</span>
                   <option class="catMenuItem" value="none">All</option>
                 </select>
               </form>
+              <p id="auth">Filter By Author:</p>
               <form id="authFilter">
-                <span id="filterauth">Filter By Author:</span>
                 <select id="author">
                   <option class="authMenuItem" value-"none">All</option>
                 </select>
@@ -65,16 +65,17 @@
     <script src="vendor/scripts/html5sql.js"></script>
     <script src="vendor/scripts/marked.js"></script>
     <script src="vendor/scripts/highlight.pack.js"></script>
+    <script src="vendor/scripts/webdb.js"></script>
 
     <!-- Our library files -->
-    <script src="scripts/webdb.js"></script>
     <script src="scripts/util.js"></script>
+    <script src="scripts/blog.js"></script>
 
     <!-- APP CODE: -->
     <!-- Model: -->
     <script src="scripts/article.js"></script>
     <script src="scripts/repo.js"></script>
-    <scripts src="/stats.js" type="text/javascript"></script>
+    <scripts src="scripts/stats.js" type="text/javascript"></script>
 
     <!-- View: -->
     <script src="scripts/articleView.js"></script>
