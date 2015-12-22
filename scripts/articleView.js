@@ -1,13 +1,15 @@
 var articleView = {};
 
-articleView.loadTemplate = function() {
-  $.get('templates/article.html'), function(data, msg, xhr) {
+articleView.loadTemplate = function(articles) {
+  $.get('templates/article.html').done(function(data, msg, xhr) {
+    console.log('successfully loaded template...', articles);
     articleView.template = Handlebars.compile(data);
     articleView.renderGroup(articles);
-  };
+  });
 };
 
 articleView.renderGroup = function(articleList) {
+  console.log(articleList);
   $('#articles')
   .fadeIn()
   .append(
