@@ -1,4 +1,4 @@
-/*body {
+body {
   background: #4CB8C4;
   background: -webkit-linear-gradient(to left, #4CB8C4 , #3CD3AD);
   background: linear-gradient(to left, #4CB8C4 , #3CD3AD);
@@ -74,7 +74,7 @@ nav ul li {
 
 /*Article styling*/
 
-/*main {
+main {
   width: 95%;
   margin: 0 auto;
 }
